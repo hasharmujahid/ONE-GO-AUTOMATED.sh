@@ -56,8 +56,8 @@ sudo echo 'export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"' >> ~/.bashrc
 rm go1.18.4.linux-amd64.tar.gz
 sleep 1s
 echo 'SETTING THE GO PATH IN BASHRC ...'
-exec /bin/bash
-source ~/.bashrc
+
+sh sourcego.sh
 
 echo 'Installing GO tools ...'
 # Go
