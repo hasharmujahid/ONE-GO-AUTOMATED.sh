@@ -120,7 +120,7 @@ git clone https://github.com/defparam/smuggler.git
 git clone https://github.com/jonaslejon/malicious-pdf.git
 # Fuxsploiter
 git clone https://github.com/almandin/fuxploider.git && cd fuxploider && pip3 install -r requirements.txt && cd ..
-
+cd ..
 # AWS
 mkdir AWS
 cd AWS
