@@ -1,8 +1,4 @@
 #!/bin/bash
-# System Updates
-sudo apt-get update -y
-sudo apt-get full-upgrade --fix-missing -y
-sudo apt-get autoremove -y
 
 cd /opt
 mkdir Tools
@@ -45,41 +41,20 @@ echo 'seclist downloaded ...'
 
 cd /opt
 
-
-#go install
-wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.4.linux-amd64.tar.gz
-#echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.profile && source $HOME/.profile
-#ADD GO TO PATH
-sudo echo 'export GOPATH="$HOME/go"' >> ~/.bashrc 
-sudo echo 'export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"' >> ~/.bashrc
-rm go1.18.4.linux-amd64.tar.gz
-sleep 1s
-echo 'SETTING THE GO PATH IN BASHRC ...'
-
-sh sourcego.sh
-
 echo 'Installing GO tools ...'
-# Go
+go install github.com/lc/gau/v2/cmd/gau@latest
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 go install github.com/OJ/gobuster/v3@latest
-go get -u -v github.com/ffuf/ffuf
-go get -u -v github.com/Emoe/kxss
-go get -u -v github.com/tomnomnom/meg
-go get -u -v github.com/tomnomnom/assetfinder
-go get -u -v github.com/tomnomnom/gf
-go get -u -v github.com/tomnomnom/gron
-go get -u -v github.com/tomnomnom/httprobe
-go get -u -v github.com/tomnomnom/unfurl
-go get -u -v github.com/tomnomnom/qsreplace
-go get -u -v github.com/tomnomnom/anew
-go get -u -v github.com/tomnomnom/waybackurls
-GO111MODULE=on go get -u -v github.com/lc/gau
-GO111MODULE=on go get -u -v github.com/projectdiscovery/httpx/cmd/httpx
-GO111MODULE=on go get -u -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
-GO111MODULE=on go get -u -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
-GO111MODULE=on go get -u -v github.com/projectdiscovery/chaos-client/cmd/chaos
-GO111MODULE=on go get -u -v github.com/jaeles-project/gospider
-
+go install github.com/ffuf/ffuf@latest
+go install github.com/Emoe/kxss@latest
+go install github.com/tomnomnom/httprobe@latest
+go install github.com/tomnomnom/assetfinder@latest
+go install github.com/tomnomnom/waybackurls@latest
+go install -v github.com/tomnomnom/anew@latest
+go install github.com/hakluke/hakrawler@latest
+go install -v github.com/hakluke/haktrails@latest
 
 
 
@@ -87,7 +62,7 @@ GO111MODULE=on go get -u -v github.com/jaeles-project/gospider
 sudo apt-get install amass -y
 
 
-
+cd 
 #MSFCONSOLE
 cd /opt
 wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
@@ -130,6 +105,7 @@ git clone https://github.com/0xSearches/sandcastle.git
 git clone https://github.com/sa7mon/S3Scanner.git && cd S3Scanner && pip3 install -r requirements.txt && cd ..
 cd ..
 
+cd /opt
 # Linux priv esc
 mkdir Linux-Priv-Esc
 cd Linux-Priv-Esc
@@ -146,19 +122,5 @@ cd ..
 
 
 
-# Firefox Extensions
-nohup firefox &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/cookie-quick-manager/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/dotgit/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/open-multiple-urls/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/s3-bucket-list/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/link-gopher/" &
-firefox -new-tab "https://addons.mozilla.org/en-US/firefox/addon/security-txt/" &
-
 # Update all git repos
 find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull origin master" \;
-# Update all go packages
-#go get -u all
