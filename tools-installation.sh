@@ -81,7 +81,7 @@ echo ' to test if john is succesfully installed run "/src/run/john --test" '
 
 # AMASS...
 echo 'INSTALLING AMASS'
-sudo apt-get install amass -y
+sudo snap install amass
 
 #EXPLOIT DB
 echo 'Installing Exploitdb ...'
