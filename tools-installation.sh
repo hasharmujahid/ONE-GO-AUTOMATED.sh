@@ -137,11 +137,14 @@ echo 'DO YOU WANT TO INSTALL METASPLOIT ENTER Y OR N'
 read decision
 if [[ $decision == "y" || $decision == "Y" ]]
 then 
-    cd /opt
-    wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
-    echo 'YOU MUST BE PRESENT TO SET THIS ONE UP ...'
-    sudo chmod +x ./metasploit-latest-linux-x64-installer.run
-    sudo ./metasploit-latest-linux-x64-installer.run
+    sudo apt install curl postgresql postgresql-contrib -y
+    cd /opt; mkdir metasploit ; cd metasploit
+    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupda>
+    chmod 755 msfinstall;sudo ./msfinstall
+    sudo systemctl start postgresql
+    msfdb init
+    rm /opt/metasploit/msfinstall 
+    cd /opt ; rmdir metasploit
     cd
 else 
     echo 'OKAY SKIPING METASPLOIT'
