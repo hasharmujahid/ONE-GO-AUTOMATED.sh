@@ -130,6 +130,8 @@ wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
 
 cd 
 
+find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull origin master" \;
+
 #METASPLOIT
 echo 'DO YOU WANT TO INSTALL METASPLOIT ENTER Y OR N'
 read decision
@@ -149,4 +151,3 @@ fi
 
 
 
-find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull origin master" \;
