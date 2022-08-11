@@ -139,7 +139,7 @@ if [[ $decision == "y" || $decision == "Y" ]]
 then 
     sudo apt install curl postgresql postgresql-contrib -y
     cd /opt; mkdir metasploit ; cd metasploit
-    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupda>
+    curl curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
     chmod 755 msfinstall;sudo ./msfinstall
     sudo systemctl start postgresql
     msfdb init
