@@ -16,3 +16,4 @@ echo 'SETTING THE GO PATH IN BASHRC ...'
 exec /bin/bash
 source /root/.bashrc
 echo 'RUN go In terminal to test your Installation and path ...'
+cd 

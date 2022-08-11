@@ -1,22 +1,74 @@
 #!/bin/bash
 
-cd /opt
-mkdir Tools
-cd Tools
+echo 'Installing PIP3'
+apt install python3-pip -y
+
+cd 
+echo 'Installing GO Recon Tools ...'
+
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+#NEUCLIE
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+#GOBUSTER
+go install github.com/OJ/gobuster/v3@latest
+#ANEW
+go install -v github.com/tomnomnom/anew@latest
+#HAKRAWLER
+go install github.com/hakluke/hakrawler@latest
+#HAKTRAILS
+go install -v github.com/hakluke/haktrails@latest
+#SUBFINDER
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+#FFUF
+go install github.com/ffuf/ffuf@latest
+#KXSS
+go install github.com/Emoe/kxss@latest
+#HTTPROBE
+go install github.com/tomnomnom/httprobe@latest
+#ASSETFINDER
+go install github.com/tomnomnom/assetfinder@latest
+#WAYBACKURLS
+go install github.com/tomnomnom/waybackurls@latest
+#GAU
+go install github.com/lc/gau/v2/cmd/gau@latest
+
+echo 'GO TOOLS INSTALLATION IS COMPLETED'
+cd 
+
+cd /opt;mkdir Tools;cd Tools
+
+#INSTALLING IMPACKET:
+echo 'Installing Impacket'
+sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/Tools/impacket
+sudo pip3 install -r /opt/impacket/requirements.txt
+cd /opt/Tools/impacket/ 
+sudo pip3 install .
+sudo python3 setup.py install
+
+
+cd /opt/Tools 
+# RESPONDER
+git colne https://github.com/SpiderLabs/Responder.git
+
 
 
 #Sqlmap install
-echo 'installing sqlmap ...'
-sudo apt install sqlmap
+echo 'installing sqlmap using apt ...'
+sudo apt install sqlmap -y
+
+#NIKTO
+sudo apt install nikto -y
+#HYDRA
+sudo apt install hydra -y
 
 #hashcat
-echo 'installing hashcat ...'
-sudo apt-get install hashcat
+echo 'installing hashcat using apt ...'
+sudo apt-get install hashcat -y
 
 # john FULL VERSION
 echo 'installing full john ...'
-sudo apt-get install build-essential libssl-dev
-sudo apt-get install yasm libgmp-dev libpcap-dev libnss3-dev libkrb5-dev pkg-config libbz2-dev zlib1g-dev
+sudo apt-get install build-essential libssl-dev -y 
+sudo apt-get install yasm libgmp-dev libpcap-dev libnss3-dev libkrb5-dev pkg-config libbz2-dev zlib1g-dev -y
 mkdir ~/src
 cd ~/src
 git clone https://github.com/magnumripper/JohnTheRipper -b bleeding-jumbo john
@@ -27,100 +79,79 @@ make -s clean && make -sj4
 
 echo ' to test if john is succesfully installed run "/src/run/john --test" '
 
+# AMASS...
+echo 'INSTALLING AMASS'
+sudo apt-get install amass -y
 
+#LISTS...
 cd /opt
 
 mkdir lists && cd lists
-
-# Rock you
 wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 echo 'rock you downloaded ...'
-# Seclists
 git clone https://github.com/danielmiessler/SecLists.git
 echo 'seclist downloaded ...'
 
 cd /opt
 
-echo 'Installing GO tools ...'
-go install github.com/lc/gau/v2/cmd/gau@latest
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
-go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-go install github.com/OJ/gobuster/v3@latest
-go install github.com/ffuf/ffuf@latest
-go install github.com/Emoe/kxss@latest
-go install github.com/tomnomnom/httprobe@latest
-go install github.com/tomnomnom/assetfinder@latest
-go install github.com/tomnomnom/waybackurls@latest
-go install -v github.com/tomnomnom/anew@latest
-go install github.com/hakluke/hakrawler@latest
-go install -v github.com/hakluke/haktrails@latest
 
 
 
-# AMASS
-sudo apt-get install amass -y
-
-
-cd 
-#MSFCONSOLE
-cd /opt
-wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
-echo 'YOU MUST BE PRESENT TO SET THIS ONE UP ...'
-sudo chmod +x ./metasploit-latest-linux-x64-installer.run
-sudo ./metasploit-latest-linux-x64-installer.run
-
+#METASPLOIT
+echo 'DO YOU WANT TO INSTALL METASPLOIT ENTER Y OR N'
+read decision
+if [[ $decision == "y" || $decision == "Y" ]]
+then 
+    cd /opt
+    wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
+    echo 'YOU MUST BE PRESENT TO SET THIS ONE UP ...'
+    sudo chmod +x ./metasploit-latest-linux-x64-installer.run
+    sudo ./metasploit-latest-linux-x64-installer.run
+    rm metasploit-latest-linux-x64-installer.run
+    cd
+else 
+    echo 'OKAY SKIPING METASPLOIT'
+fi
 
 #EXPLOIT DB
 echo 'Installing Exploitdb ...'
 sudo apt-get -y install exploitdb
 
-
-#Pip
-pip3 install search-that-hash
-
 cd /opt
 
-# Github
-mkdir Github
-cd Github
-# Asn lookup
-git clone https://github.com/yassineaboukir/Asnlookup && cd Asnlookup && pip3 install -r requirements.txt && cd ..
-# Responder 
-git clone https://github.com/lgandx/Responder.git
-# XSS Strike
-git clone https://github.com/s0md3v/XSStrike.git && cd XSStrike && pip3 install -r requirements.txt && cd ..
-# Smuggler
-git clone https://github.com/defparam/smuggler.git
-# Malicious PDF Generator
-git clone https://github.com/jonaslejon/malicious-pdf.git
-# Fuxsploiter
-git clone https://github.com/almandin/fuxploider.git && cd fuxploider && pip3 install -r requirements.txt && cd ..
+#WINDOWS PRIVESC
+mkdir windows-privesc 
+#mimikatz
+cd windows-privesc;mkdir mimikatz;cd mimikatz
+wget https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210810-2/mimikatz_trunk.zip ;unzip mimikatz_trunk.zip;rm mimikatz_trunk.zip
+cd /opt/windows-privesc
+#winpeas
+mkdir winpeas;cd winpeas
+wget https://github.com/carlospolop/PEASS-ng/releases/download/20220807/winPEAS.bat 
+wget https://github.com/carlospolop/PEASS-ng/releases/download/20220807/winPEASx64.exe
+wget https://github.com/carlospolop/PEASS-ng/releases/download/20220807/winPEASx86.exe
 cd ..
-# AWS
-mkdir AWS
-cd AWS
-git clone https://github.com/nahamsec/lazys3.git
-git clone https://github.com/0xSearches/sandcastle.git
-git clone https://github.com/sa7mon/S3Scanner.git && cd S3Scanner && pip3 install -r requirements.txt && cd ..
+mkdir Others-Enumeration-Scripts; cd Others-Enumeration-Scripts
+wget https://github.com/NyaMeeEain/Privilege-Escalation-Windows/blob/master/Watson.exe
+wget https://github.com/NyaMeeEain/Privilege-Escalation-Windows/blob/master/Seatbelt.exe
+wget https://github.com/NyaMeeEain/Privilege-Escalation-Windows/blob/master/JuicyPotato.exe
+wget https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1
+wget https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1
 cd ..
 
 cd /opt
-# Linux priv esc
-mkdir Linux-Priv-Esc
-cd Linux-Priv-Esc
-git clone https://github.com/Anon-Exploiter/SUID3NUM.git
-git clone https://github.com/mzet-/linux-exploit-suggester.git
+#LINUX PRIVESC TOOLS
+mkdir linux-privesc
+cd linux-privesc
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32
-git clone https://github.com/carlospolop/PEASS-ng.git
-git clone https://github.com/rebootuser/LinEnum.git
-git clone https://github.com/sleventyeleven/linuxprivchecker.git && cd linuxprivchecker && pip3 install -r requirements.txt && cd ..
-git clone https://github.com/spencerdodd/kernelpop.git
+wget https://raw.githubusercontent.com/jondonas/linux-exploit-suggester-2/master/linux-exploit-suggester-2.pl
+wget https://github.com/carlospolop/PEASS-ng/releases/download/20220807/linpeas.sh
+wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+
 cd ..
 
 
 
 
-# Update all git repos
 find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull origin master" \;
