@@ -40,7 +40,7 @@ cd /opt;mkdir Tools;cd Tools
 #INSTALLING IMPACKET:
 echo 'Installing Impacket'
 sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/Tools/impacket
-sudo pip3 install -r /opt/impacket/requirements.txt
+sudo pip3 install -r /opt/Tools/impacket/requirements.txt
 cd /opt/Tools/impacket/ 
 sudo pip3 install .
 sudo python3 setup.py install
@@ -48,7 +48,7 @@ sudo python3 setup.py install
 
 cd /opt/Tools 
 # RESPONDER
-git colne https://github.com/SpiderLabs/Responder.git
+git clone https://github.com/SpiderLabs/Responder.git
 
 
 
