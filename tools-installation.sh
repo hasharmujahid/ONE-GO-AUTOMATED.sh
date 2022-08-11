@@ -83,6 +83,10 @@ echo ' to test if john is succesfully installed run "/src/run/john --test" '
 echo 'INSTALLING AMASS'
 sudo apt-get install amass -y
 
+#EXPLOIT DB
+echo 'Installing Exploitdb ...'
+sudo apt-get -y install exploitdb
+
 #LISTS...
 cd /opt
 
@@ -95,30 +99,6 @@ echo 'seclist downloaded ...'
 cd /opt
 
 
-
-
-#METASPLOIT
-echo 'DO YOU WANT TO INSTALL METASPLOIT ENTER Y OR N'
-read decision
-if [[ $decision == "y" || $decision == "Y" ]]
-then 
-    cd /opt
-    wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
-    echo 'YOU MUST BE PRESENT TO SET THIS ONE UP ...'
-    sudo chmod +x ./metasploit-latest-linux-x64-installer.run
-    sudo ./metasploit-latest-linux-x64-installer.run
-    cd
-else 
-    echo 'OKAY SKIPING METASPLOIT'
-fi
-
-#EXPLOIT DB
-echo 'Installing Exploitdb ...'
-sudo apt-get -y install exploitdb
-
-cd /opt
-
-#WINDOWS PRIVESC
 mkdir windows-privesc 
 #mimikatz
 cd windows-privesc;mkdir mimikatz;cd mimikatz
@@ -148,7 +128,23 @@ wget https://raw.githubusercontent.com/jondonas/linux-exploit-suggester-2/master
 wget https://github.com/carlospolop/PEASS-ng/releases/download/20220807/linpeas.sh
 wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
 
-cd ..
+cd 
+
+#METASPLOIT
+echo 'DO YOU WANT TO INSTALL METASPLOIT ENTER Y OR N'
+read decision
+if [[ $decision == "y" || $decision == "Y" ]]
+then 
+    cd /opt
+    wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
+    echo 'YOU MUST BE PRESENT TO SET THIS ONE UP ...'
+    sudo chmod +x ./metasploit-latest-linux-x64-installer.run
+    sudo ./metasploit-latest-linux-x64-installer.run
+    cd
+else 
+    echo 'OKAY SKIPING METASPLOIT'
+fi
+
 
 
 
