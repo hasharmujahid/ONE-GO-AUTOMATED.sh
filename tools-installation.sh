@@ -107,7 +107,6 @@ then
     echo 'YOU MUST BE PRESENT TO SET THIS ONE UP ...'
     sudo chmod +x ./metasploit-latest-linux-x64-installer.run
     sudo ./metasploit-latest-linux-x64-installer.run
-    rm metasploit-latest-linux-x64-installer.run
     cd
 else 
     echo 'OKAY SKIPING METASPLOIT'
