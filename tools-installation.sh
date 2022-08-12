@@ -2,6 +2,7 @@
 
 echo 'Installing PIP3'
 apt install python3-pip -y
+apt-get update --fix-missing
 
 cd 
 echo 'Installing GO Recon Tools ...'
@@ -34,6 +35,12 @@ go install github.com/lc/gau/v2/cmd/gau@latest
 
 echo 'GO TOOLS INSTALLATION IS COMPLETED'
 cd 
+#CRACKMAPEXEC:
+apt install pipx -y 
+pipx ensurepath
+apt install python3.10-venv -y
+pipx install crackmapexec
+pipx ensurepath
 
 cd /opt;mkdir Tools;cd Tools
 
@@ -51,12 +58,8 @@ cd /opt/Tools
 git clone https://github.com/SpiderLabs/Responder.git
 
 
-#CRACKMAPEXEC:
-python3 -m pip install pipx
-pipx ensurepath
-apt install python3.8-venv
-pipx install crackmapexec
-pipx ensurepath
+
+
 echo ' YOU WILL NEED TO RELOGIN TO FULLY INSTALL IT ...'
 #Sqlmap install
 echo 'installing sqlmap using apt ...'
