@@ -34,16 +34,14 @@ go install github.com/tomnomnom/waybackurls@latest
 go install github.com/lc/gau/v2/cmd/gau@latest
 
 echo 'GO TOOLS INSTALLATION IS COMPLETED'
-cd 
+
+cd /opt;mkdir Tools;cd Tools
 #CRACKMAPEXEC:
 apt install pipx -y 
 pipx ensurepath
 apt install python3.10-venv -y
 pipx install crackmapexec
 pipx ensurepath
-
-cd /opt;mkdir Tools;cd Tools
-
 #INSTALLING IMPACKET:
 echo 'Installing Impacket'
 sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/Tools/impacket
@@ -51,7 +49,6 @@ sudo pip3 install -r /opt/Tools/impacket/requirements.txt
 cd /opt/Tools/impacket/ 
 sudo pip3 install .
 sudo python3 setup.py install
-
 
 cd /opt/Tools 
 # RESPONDER
