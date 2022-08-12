@@ -57,9 +57,6 @@ cd /opt/Tools
 # RESPONDER
 git clone https://github.com/SpiderLabs/Responder.git
 
-
-
-
 echo ' YOU WILL NEED TO RELOGIN TO FULLY INSTALL IT ...'
 #Sqlmap install
 echo 'installing sqlmap using apt ...'
