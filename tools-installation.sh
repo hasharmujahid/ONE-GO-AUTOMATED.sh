@@ -153,6 +153,10 @@ else
     echo 'OKAY SKIPING METASPLOIT'
 fi
 
+# I KNOW ITS WIRED BUT IT WORKS THT WAY.🤣
+cd /opt/Tools/impacket/ 
+sudo pip3 install .
+sudo python3 setup.py install 
 
 
 
