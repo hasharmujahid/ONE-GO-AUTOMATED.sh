@@ -51,7 +51,13 @@ cd /opt/Tools
 git clone https://github.com/SpiderLabs/Responder.git
 
 
-
+#CRACKMAPEXEC:
+python3 -m pip install pipx
+pipx ensurepath
+apt install python3.8-venv
+pipx install crackmapexec
+pipx ensurepath
+echo ' YOU WILL NEED TO RELOGIN TO FULLY INSTALL IT ...'
 #Sqlmap install
 echo 'installing sqlmap using apt ...'
 sudo apt install sqlmap -y
