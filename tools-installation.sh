@@ -1,8 +1,22 @@
 #!/bin/bash
 
+cd /opt;mkdir Tools;cd Tools
 echo 'Installing PIP3'
 apt install python3-pip -y
 apt-get update --fix-missing
+#CRACKMAPEXEC:
+apt install pipx -y 
+pipx ensurepath
+apt install python3.10-venv -y
+pipx install crackmapexec
+pipx ensurepath
+#INSTALLING IMPACKET:
+echo 'Installing Impacket'
+sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/Tools/impacket
+sudo pip3 install -r /opt/Tools/impacket/requirements.txt
+cd /opt/Tools/impacket/ 
+sudo pip3 install .
+sudo python3 setup.py install
 
 cd 
 echo 'Installing GO Recon Tools ...'
@@ -35,20 +49,6 @@ go install github.com/lc/gau/v2/cmd/gau@latest
 
 echo 'GO TOOLS INSTALLATION IS COMPLETED'
 
-cd /opt;mkdir Tools;cd Tools
-#CRACKMAPEXEC:
-apt install pipx -y 
-pipx ensurepath
-apt install python3.10-venv -y
-pipx install crackmapexec
-pipx ensurepath
-#INSTALLING IMPACKET:
-echo 'Installing Impacket'
-sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/Tools/impacket
-sudo pip3 install -r /opt/Tools/impacket/requirements.txt
-cd /opt/Tools/impacket/ 
-sudo pip3 install .
-sudo python3 setup.py install
 
 cd /opt/Tools 
 # RESPONDER
