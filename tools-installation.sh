@@ -155,8 +155,7 @@ fi
 
 # I KNOW ITS WIRED BUT IT WORKS THT WAY.🤣
 cd /opt/Tools/impacket/ 
-sudo pip3 install .
-sudo python3 setup.py install 
+sudo pip3 install . 
 
 
 
