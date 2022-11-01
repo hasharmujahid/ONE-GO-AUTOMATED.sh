@@ -19,6 +19,8 @@ sudo pip3 install .
 sudo python3 setup.py install
 
 cd 
+echo 'Please wait'
+
 echo 'Installing GO Recon Tools ...'
 
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
