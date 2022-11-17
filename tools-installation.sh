@@ -51,6 +51,9 @@ go install github.com/lc/gau/v2/cmd/gau@latest
 
 echo 'GO TOOLS INSTALLATION IS COMPLETED'
 
+#PIP packages installation
+
+sudo pip3 install updog 
 
 cd /opt/Tools 
 # RESPONDER
