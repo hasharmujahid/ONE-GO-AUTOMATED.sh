@@ -51,6 +51,17 @@ go install github.com/lc/gau/v2/cmd/gau@latest
 
 echo 'GO TOOLS INSTALLATION IS COMPLETED'
 
+#apt pakages
+apt install net-tools
+apt  install nmap
+apt install whois
+apt install whatweb
+apt install python3-shodan
+
+# setting aliases
+sudo echo "alias cls='clear'" >> /etc/bash.bashrc
+sudo echo "alias jarvis='mkdir nmap ffuf exploit'" >> /etc/bash.bashrc
+
 #PIP packages installation
 
 sudo pip3 install updog 
